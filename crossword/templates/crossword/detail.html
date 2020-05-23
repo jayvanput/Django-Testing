@@ -1,0 +1,55 @@
+{% load crossword_tags %}
+{% load static %}
+
+<head>
+  <link type='text/css' rel='stylesheet' href="{% static 'crossword/grid.css' %}">
+  <link rel="shortcut icon" type="image/png" href="{% static 'crossword/favicon.ico' %}" />
+</head>
+
+<body>
+  <div id='container'>
+    <header>
+      {{ puzzle }}
+      {{ puzzle.author}}
+    </header>
+    <table id='test'>
+      <tbody>
+        {% for i in size_loop %}
+        {% with forloop.counter0 as row %}
+        <tr>
+          {% for j in size_loop %}
+          {% with forloop.counter0 as cell %}
+          <td>
+            <input maxlength="1" name="letter" style="font-size:{{ input_size }}"></input>
+            <span style="font-size:{{ span_size }}">
+              {% index squares puzzle.size row cell %}
+            </span>
+          </td>
+          {% endwith %}
+          {% endfor %}
+        </tr>
+        {% endwith %}
+        {% endfor %}
+      </tbody>
+    </table>
+    <div id='cluesA'>
+      <ul>
+        <lh>Across</lh>
+        {% for letter in across_clues %}
+        <li>{{ letter.text }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div id='CluesD'>
+      <ul>
+        <lh>Down</lh>
+        {% for letter in down_clues %}
+        <li>{{ letter.text }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <footer id='interface'>
+
+    </footer>
+  </div>
+</body>

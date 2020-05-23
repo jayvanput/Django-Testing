@@ -1,0 +1,13 @@
+#container {
+  margin: auto;
+  width: 500px;
+}
+
+.puzzle-info {
+  border: 1px solid black
+}
+
+header {
+  height:50px;
+  border: 1px solid black;
+}

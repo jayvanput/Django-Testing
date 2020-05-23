@@ -1,0 +1,45 @@
+{% load static %}
+
+<head>
+  <link type='text/css' rel='stylesheet' href="{% static 'crossword/grid.css' %}?20200520">
+  <link rel="shortcut icon" type="image/png" href="{% static 'crossword/favicon.ico' %}" />
+</head>
+
+<body>
+  <form action='{% url "crossword:submit" %}' method="post">
+    {% csrf_token %}
+    <div id='container'>
+      <header>
+        <div>
+          <label for="puzzle_name">Puzzle Name: </label>
+          <input name="puzzle_name" value="Puzzle's Name">
+        </div>
+        <div>
+          <label for="author_name">Author Name: </label>
+          <input name="author_name" value="Author's Name">
+        </div>
+      </header>
+      <!-- Puzzle grid -->
+      <table>
+        <tbody>
+        </tbody>
+      </table>
+      <!-- Across clues -->
+      <div id='cluesA'>
+        <div style="text-align:center">Across</div>
+      </div>
+      <!-- Down clues -->
+      <div id='cluesD'>
+        <div style="text-align:center">Down</div>
+      </div>
+      <!-- Interface for interacting with grid -->
+      <footer id='interface'>
+        <label for='dimensions'>Puzzle size:</label>
+        <input type='number' name='dimensions' id="dimensions" value="5" max='15'>
+        <input type="checkbox" id='black_button'>Edit Black Squares</button>
+        <input type="submit" value="Create puzzle">
+      </footer>
+    </div>
+  </form>
+  <script type="module" src='{% static "crossword/js/main.js" %}'></script>
+</body>
