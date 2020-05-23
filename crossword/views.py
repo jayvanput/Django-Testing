@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
-from django.http import HttpResponse
+from django.urls import reverse
+from django.http import HttpResponse, HttpResponseRedirect
 
 from .models import Puzzle, Clues, Square
 # Create your views here.
@@ -62,4 +63,4 @@ def submit(request):
                 number=squares[i*int(size) + j], col=i, row=j, black=False, puzzle=puzzle)
             square_model.save()
 
-    return HttpResponse('you did it!')
+    return HttpResponseRedirect(reverse('crossword:index'))
