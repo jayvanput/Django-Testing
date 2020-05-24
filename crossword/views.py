@@ -44,16 +44,20 @@ def submit(request):
     puzzle = Puzzle(size=size, name=puzzle_name, author=author_name)
     puzzle.save()
     # Handles Creating the across clues.
-    across_clues = request.POST.getlist('clue_across')
-    for clue_html in across_clues:
+    across_text = request.POST.getlist('clue_text_across')
+    across_number = request.POST.getlist('clue_number_across')
+
+    for i in range(len(across_text)):
         clue = Clues(direction=True, puzzle=puzzle,
-                     text=clue_html, number=1)
+                     text=across_text[i], number=across_number[i])
         clue.save()
     # Handles Creating the down clues.
-    down_clues = request.POST.getlist('clue_down')
-    for clue_html in down_clues:
+    down_text = request.POST.getlist('clue_text_down')
+    down_number = request.POST.getlist('clue_number_down')
+
+    for i in range(len(down_text)):
         clue = Clues(direction=False, puzzle=puzzle,
-                     text=clue_html, number=1)
+                     text=down_text[i], number=down_number[i])
         clue.save()
     # Builds each square's data
     squares = request.POST.getlist('square')

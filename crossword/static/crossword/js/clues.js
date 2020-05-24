@@ -17,18 +17,25 @@ export function appendClues(direction, clueNode, dir_name) {
     clue_text.className = 'clue_text'
     clue_text.contentEditable = true;
     // Create hidden input to send value of div content.
-    let clue_hide = document.createElement("input");
-    clue_hide.type = 'hidden';
-    clue_hide.name = 'clue_' + dir_name;
-    clue_hide.value = ""
+    let clue_text_hide = document.createElement("input");
+    clue_text_hide.type = 'hidden';
+    clue_text_hide.name = 'clue_text_' + dir_name;
+    clue_text_hide.value = ""
+    // Create hidden input to send value of div content.
+    let clue_number_hide = document.createElement("input");
+    clue_number_hide.type = 'hidden';
+    clue_number_hide.name = 'clue_number_' + dir_name;
+    clue_number_hide.value = direction[i]
     // Add event listener to update hidden input on div text change.
     clue_text.addEventListener('input', function () {
-      clue_hide.value = clue_text.textContent;
+      clue_text_hide.value = clue_text.textContent;
+
     })
     // Append to clue container.    
     clue.append(clue_number);
     clue.append(clue_text);
-    clue.append(clue_hide);
+    clue.append(clue_text_hide);
+    clue.append(clue_number_hide);
 
     clueNode.append(clue);
   }

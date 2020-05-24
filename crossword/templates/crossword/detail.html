@@ -33,20 +33,22 @@
       </tbody>
     </table>
     <div id='cluesA'>
-      <ul>
-        <lh>Across</lh>
-        {% for letter in across_clues %}
-        <li>{{ letter.text }}</li>
-        {% endfor %}
-      </ul>
+      <div>Across</div>
+      {% for letter in across_clues %}
+      <div>
+        <div class="clue_number">{{ letter.number }}.</div>
+        <div class="clue_text">{{ letter.text }}</div>
+      </div>
+      {% endfor %}
     </div>
     <div id='CluesD'>
-      <ul>
-        <lh>Down</lh>
-        {% for letter in down_clues %}
-        <li>{{ letter.text }}</li>
-        {% endfor %}
-      </ul>
+      <div>Down</div>
+      {% for letter in down_clues %}
+      <div>
+        <div class="clue_number">{{ letter.number }}.</div>
+        <div class="clue_text">{{ letter.text }}</div>
+      </div>
+      {% endfor %}
     </div>
     <footer id='interface'>
 
