@@ -4,5 +4,5 @@ django-heroku==0.3.1
 gunicorn==20.0.4
 psycopg2==2.8.5
 pytz==2019.3
-setuptools==44.0.0.post20200106
+setuptools==44.0.0
 whitenoise==5.1.0
