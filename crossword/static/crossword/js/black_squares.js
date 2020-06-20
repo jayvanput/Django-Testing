@@ -29,7 +29,7 @@ export function setBlack(e) {
   // Toggle cell's class name (decides background color)
   cell.classList.toggle("black")
   opp_cell.classList.toggle("black")
-  console.log(cell.classList)
+
   if (!cell.classList.length) {
     cell.childNodes[1].value = ""
     opp_cell.childNodes[1].value = ""

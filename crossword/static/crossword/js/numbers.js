@@ -64,7 +64,6 @@ export function getNumbers() {
       setCellContent(number, hidden_number, tally)
       tally++;
     }
-    console.log(i)
   }
   appendClues(across, across_div, "across")
   appendClues(down, down_div, "down")
