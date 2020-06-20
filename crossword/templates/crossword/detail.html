@@ -20,8 +20,7 @@
           {% for j in size_loop %}
           {% with forloop.counter0 as cell %}
           <td>
-            <input maxlength="1" name="letter"
-              style="font-size:{{ input_size }}; background-color:{% index_black squares_qs puzzle.size row cell %};"></input>
+            <input maxlength="1" name="letter" style="font-size:{{ input_size }};"></input>
             <span style="font-size:{{ span_size }}">
               {% index squares_qs puzzle.size row cell %}
             </span>
