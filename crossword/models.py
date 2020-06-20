@@ -25,6 +25,7 @@ class Clues(models.Model):
 
 class Square(models.Model):
     number = models.CharField(max_length=3)
+    value = models.CharField(max_length=1)
     col = models.IntegerField()
     row = models.IntegerField()
     black = models.BooleanField()

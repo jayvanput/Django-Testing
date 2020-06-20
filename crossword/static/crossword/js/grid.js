@@ -11,6 +11,8 @@ function buildCell(cell, dim_size) {
   input = document.createElement("input");
   input.maxLength = 1;
   input.name = "letter"
+  input.onkeydown = function () { if (event.keyCode == 13) return false }
+  input.onfocus = function () { this.value = "" }
   input.style.fontSize = 400 * (1 / dim_size)
   cell.append(input);
   // Add hidden input box for form submission.

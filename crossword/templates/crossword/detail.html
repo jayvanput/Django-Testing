@@ -20,9 +20,10 @@
           {% for j in size_loop %}
           {% with forloop.counter0 as cell %}
           <td>
-            <input maxlength="1" name="letter" style="font-size:{{ input_size }}"></input>
+            <input maxlength="1" name="letter"
+              style="font-size:{{ input_size }}; background-color:{% index_black squares_qs puzzle.size row cell %};"></input>
             <span style="font-size:{{ span_size }}">
-              {% index squares puzzle.size row cell %}
+              {% index squares_qs puzzle.size row cell %}
             </span>
           </td>
           {% endwith %}
@@ -51,7 +52,9 @@
       {% endfor %}
     </div>
     <footer id='interface'>
-
+      <button id="check">Check Puzzle</button>
     </footer>
   </div>
+  {{ squares|json_script:"squares" }}
+  <script type="module" src='{% static "crossword/js/detail.js" %}'></script>
 </body>

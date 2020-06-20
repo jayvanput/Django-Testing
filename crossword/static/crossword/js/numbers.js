@@ -1,11 +1,13 @@
 import { appendClues } from './clues.js'
 
+
 function setCellContent(number, hidden_number, value) {
   number.textContent = value;
   hidden_number.value = value;
 }
 
-export function getNumbers(size) {
+export function getNumbers() {
+  let size = document.getElementById("dimensions").value;
   let across_div = document.getElementById("cluesA");
   let down_div = document.getElementById("cluesD");
   let tally = 1;
@@ -62,7 +64,9 @@ export function getNumbers(size) {
       setCellContent(number, hidden_number, tally)
       tally++;
     }
+    console.log(i)
   }
   appendClues(across, across_div, "across")
   appendClues(down, down_div, "down")
+
 }

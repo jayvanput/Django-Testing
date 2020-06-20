@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
+from django.core import serializers
 
 from .models import Puzzle, Clues, Square
 # Create your views here.
@@ -25,8 +26,9 @@ class DetailView(generic.DetailView):
         context['down_clues'] = down
         size_loop = range(self.object.size)
         context['size_loop'] = size_loop
-        squares = self.object.squares.all
-        context['squares'] = squares
+        context['squares_qs'] = self.object.squares.all
+        context['squares'] = serializers.serialize(
+            'json', self.object.squares.get_queryset())
         context['span_size'] = 160 * (1 / self.object.size)
         context['input_size'] = 400 * (1 / self.object.size)
         return context
@@ -61,10 +63,11 @@ def submit(request):
         clue.save()
     # Builds each square's data
     squares = request.POST.getlist('square')
+    letters = request.POST.getlist('letter')
     for i in range(0, int(size)):
         for j in range(0, int(size)):
             square_model = Square(
-                number=squares[i*int(size) + j], col=i, row=j, black=False, puzzle=puzzle)
+                number=squares[i*int(size) + j], value=letters[i*int(size) + j], col=i, row=j, black=False, puzzle=puzzle)
             square_model.save()
 
     return HttpResponseRedirect(reverse('crossword:index'))
