@@ -17,11 +17,14 @@ dims.addEventListener('change', function () {
 
 black_button.addEventListener('click', function () {
   blackToggle();
+  let submit_btn = document.getElementById("submit")
   tbl.classList.toggle('edit_mode');
   if (flag) {
     dims.disabled = true;
+    submit_btn.disabled = true;
   } else {
     dims.disabled = false;
+    submit_btn.disabled = false;
   }
   flag = !flag
 })
