@@ -12,14 +12,14 @@
 
 <body>
   <header>
-    Test
+    Welcome to my site!
   </header>
   <div id="container">
     {% for puz in puzzle_list  %}
-    <div class=puzzle-info>
-      <div><a href='{% url "crossword:detail" puz.id %}'>{{puz}}</a></div>
-      <div>By: {{puz.author}}</div>
-      <div>Size: {{puz.size}}x{{puz.size}}</div>
+    <div class=puzzle-cell onclick="location.href='{% url "crossword:detail" puz.id %}'">
+      <div class="puzzle-name">{{puz}}</div>
+      <div class="puzzle-author">By: {{puz.author}}</div>
+      <div class="puzzle-size">Size: {{puz.size}}x{{puz.size}}</div>
     </div>
     {% endfor %}
     <button><a href='{% url "crossword:build" %}'>Build your own puzzle!</a></button>
