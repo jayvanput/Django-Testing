@@ -29,6 +29,10 @@ table {
   display: hidden;
 }
 
+#dimensions_val {
+  display: inline-block;
+}
+
 .edit_mode {
   border: 2px dashed red;
 }
