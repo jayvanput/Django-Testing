@@ -1,7 +1,7 @@
 {% load static %}
 
 <head>
-  <link type='text/css' rel='stylesheet' href="{% static 'crossword/grid.css' %}?20200520">
+  <link type='text/css' rel='stylesheet' href="{% static 'crossword/css/build.css' %}?20200520">
   <link rel="shortcut icon" type="image/png" href="{% static 'crossword/favicon.ico' %}" />
 </head>
 
@@ -10,12 +10,12 @@
     {% csrf_token %}
     <div id='container'>
       <header>
-        <div>
-          <label for="puzzle_name">Puzzle Name: </label>
+        <div id="puzzle-name">
+          <label for="puzzle_name">Puzzle Name </label>
           <input name="puzzle_name" value="Puzzle's Name">
         </div>
-        <div>
-          <label for="author_name">Author Name: </label>
+        <div id="puzzle-author">
+          <label for="author_name">Author Name </label>
           <input name="author_name" value="Author's Name">
         </div>
       </header>
