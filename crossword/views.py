@@ -10,6 +10,7 @@ from .models import Puzzle, Clues, Square
 
 class IndexView(generic.ListView):
     model = Puzzle
+    paginate_by = 8
     template_name = 'crossword/index.html'
     context_object_name = 'puzzle_list'
 
